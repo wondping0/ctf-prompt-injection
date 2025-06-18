@@ -1,0 +1,29 @@
+# Node modules
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# System files
+.DS_Store
+Thumbs.db
+.env
+
+# Editor files
+.vscode/
+.idea/
+
+# Dependency directory for Yarn & pnpm (opsional)
+.pnpm-store/
+.yarn/
+.yarnrc.yml
+
+# Build outputs
+dist/
+build/
+tmp/
+coverage/

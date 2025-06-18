@@ -1,0 +1,22 @@
+# Folder node_modules tidak perlu disalin (karena akan diinstall ulang di container)
+node_modules
+npm-debug.log
+yarn-error.log
+
+# File konfigurasi/lingkungan lokal
+.env
+.env.local
+
+# File sistem
+.DS_Store
+Thumbs.db
+
+# File dan folder umum yang tidak perlu di-copy ke Docker
+*.log
+.git
+.gitignore
+.vscode
+*.swp
+coverage
+dist
+tmp

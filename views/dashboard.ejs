@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hack the AI?</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(to right, #0f172a, #1e293b);
+    }
+  </style>
+</head>
+<body class="text-white min-h-screen flex flex-col items-center justify-start py-12 px-4 font-sans">
+
+  <!-- Header -->
+  <header class="mb-12 text-center">
+    <h1 class="text-5xl font-extrabold text-cyan-400 drop-shadow-lg animate-pulse">🧠 Hack the AI?</h1>
+    <p class="mt-4 text-lg text-gray-300 max-w-xl mx-auto">
+      Tantang dirimu untuk mengecoh AI!. Temukan celah untuk membuka <strong>flag tersembunyi</strong>!
+    </p>
+  </header>
+
+  <!-- Challenge Cards -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl w-full">
+    <% const challenges = [1, 2, 3, 4, 5]; %>
+    <% const details = [
+      "Challenge the bot with clever prompts to extract a secret key hidden deep in its memory.",
+      "Inject a sneaky rule into the bot’s instructions—can you overwrite its behavior?",
+      "Figure out whether this 'assistant' is truly helpful—or just pretending to be.",
+      "Break language barriers! Can you manipulate this multilingual bot to leak something it shouldn’t?",
+      "A friendly Q&A assistant… or is it? Trick it into revealing forbidden knowledge."
+    ]; %>
+
+    <% challenges.forEach(num => { %>
+      <a href="/challenge<%= num %>" class="group bg-gray-800 rounded-xl p-6 shadow-lg hover:bg-gradient-to-tr from-cyan-400 to-teal-300 transition duration-300 transform hover:-translate-y-1 hover:scale-[1.02]">
+        <div class="flex items-center justify-between mb-3">
+          <h2 class="text-2xl font-bold group-hover:text-black">Challenge <%= num %></h2>
+          <span class="text-sm text-gray-400 group-hover:text-black transition">🔐 Level <%= num %></span>
+        </div>
+        <p class="text-sm text-gray-300 group-hover:text-black transition">
+          <%= details[num - 1] %>
+        </p>
+        <p class="mt-3 text-xs italic text-gray-400 group-hover:text-black transition">
+          ▶️ Click to try – discover the unexpected!
+        </p>
+      </a>
+    <% }) %>
+  </div>
+
+  <!-- Footer -->
+  <footer class="mt-20 text-center text-sm text-gray-500">
+    <p>&copy; 2025 <span class="text-cyan-400 font-semibold">Prompt Injection CTF</span></p>
+    <p class="mt-1">Built with ❤️ by <a href="https://siberlab.id" class="underline hover:text-white">Siberlab.id</a></p>
+  </footer>
+
+</body>
+</html>

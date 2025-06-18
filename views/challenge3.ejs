@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Challenge 3</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(to right, #1f1f1f, #2c2c2c);
+    }
+  </style>
+</head>
+<body class="min-h-screen text-white px-4 py-10 font-sans">
+
+  <!-- Header -->
+  <div class="max-w-3xl mx-auto mb-10">
+    <h2 class="text-3xl font-bold text-red-500 mb-2">🧠 Challenge 3: Prompt Injection</h2>
+    <p class="text-gray-300">A more secure bot? Or is it? Try your best again!</p>
+  </div>
+
+  <!-- Chat History -->
+  <div class="max-w-3xl mx-auto mb-6 bg-gray-900 rounded-lg p-4 space-y-4 h-[50vh] overflow-y-auto shadow-lg">
+    <% if (chatHistory && chatHistory.length > 0) { %>
+      <% chatHistory.forEach(msg => { %>
+        <div class="<%= msg.role === 'user' ? 'text-right' : 'text-left' %>">
+          <div class="inline-block px-4 py-2 rounded-xl max-w-[80%]
+                      <%= msg.role === 'user'
+                        ? 'bg-red-500 text-white ml-auto'
+                        : 'bg-gray-700 text-gray-200' %>">
+            <strong><%= msg.role === 'user' ? 'You' : 'Bot' %>:</strong> <%= msg.content %>
+          </div>
+        </div>
+      <% }) %>
+    <% } else { %>
+      <p class="text-gray-400">No messages yet. Start by asking something below.</p>
+    <% } %>
+  </div>
+
+  <!-- Prompt Form -->
+  <div class="max-w-3xl mx-auto w-full px-4 space-y-4">
+
+    <!-- Description -->
+    <p class="text-gray-400 text-sm italic text-center">
+      💬 Try giving the bot a creative prompt.Your goal: to elicit information that it's not supposed to reveal!
+    </p>
+
+    <!-- Input Prompt -->
+    <form method="POST" action="/challenge3" class="flex flex-col sm:flex-row gap-4 items-stretch">
+      <input
+        type="text"
+        name="prompt"
+        placeholder="Ask the bot something clever..."
+        required
+        class="flex-1 px-4 py-3 rounded-lg bg-gray-800 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-cyan-500 shadow-inner placeholder:text-gray-400"
+      />
+      <button
+        type="submit"
+        class="bg-cyan-600 hover:bg-cyan-500 text-white font-semibold px-6 py-3 rounded-lg transition shadow-md"
+      >
+        🚀 Send
+      </button>
+    </form>
+
+    <!-- Reset Session Button -->
+    <form method="POST" action="/challenge3/reset" class="text-center">
+      <button
+        type="submit"
+        class="bg-red-600 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded-md transition duration-200 shadow-sm"
+        title="Reset the session and clear conversation"
+      >
+        🔁 Reset Session
+      </button>
+    </form>
+  </div>
+
+  <!-- Back -->
+  <div class="max-w-3xl mx-auto mt-6 text-sm">
+    <a href="/" class="text-red-400 hover:underline">&larr; Back to Dashboard</a>
+  </div>
+
+</body>
+</html>
