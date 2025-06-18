@@ -31,12 +31,11 @@ exports.handlePrompt = async (req, res) => {
 
   try {
     // Kirim seluruh riwayat ke OpenAI
-
     const completion = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: req.session.challenge1,
     });
-
+    
     const aiReply = completion.choices[0].message.content;
 
     // Tambahkan balasan AI ke session
@@ -48,6 +47,7 @@ exports.handlePrompt = async (req, res) => {
       chatHistory: req.session.challenge1.slice(1), // hilangkan system untuk tampilkan
     });
   } catch (err) {
+    console.error("OpenAI API Error:", err);
     res.render("challenge1", {
       chatHistory: [{ role: "system", content: "❌ Error contacting OpenAI API." }],
     });

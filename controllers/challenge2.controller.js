@@ -52,6 +52,7 @@ exports.handlePrompt = async (req, res) => {
       chatHistory: req.session.challenge2.slice(2), // hilangkan system untuk tampilkan
     });
   } catch (err) {
+    console.error("OpenAI API Error:", err);
     res.render("challenge2", {
       chatHistory: [{ role: "system", content: "❌ Error contacting OpenAI API." }],
     });
